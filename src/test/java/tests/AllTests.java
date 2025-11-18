@@ -1,11 +1,10 @@
-package lab5.tests;
+package tests;
 
-import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
-
+import org.junit.platform.suite.api.SelectClasses;
 
 @Suite
-@SelectClasses({TestAddRemoveBooks.class, 
+@SelectClasses({TestAddRemoveBooks.class,
 				TestAddRemoveMembers.class,
 				TestFindClassString.class,
 				TestBorrowBooks.class,

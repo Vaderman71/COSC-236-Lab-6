@@ -1,8 +1,9 @@
-package lab5.tests;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
+import lab5.PaperBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,13 +23,13 @@ class TestAddRemoveMembers {
 	
 	Member member1 = new Member("Dude");
 	Member member2 = new Member("Gal");
-	Book book1 = new Book("Dune");
-	Book book2 = new Book("1984");
+	Book book1 = new PaperBook("Dune");
+	Book book2 = new PaperBook("1984");
 	
 	@Test
 	void AddMember() {
 		
-		assertEquals(library.membersCount(), 0, "Should be no members after initialization");	
+		assertEquals(0, library.membersCount(), "Should be no members after initialization");
 		library.addMember(member1);	
 		assertEquals(library.membersCount(), 1, "One member should have been added");	
 		library.addMember(member2);
