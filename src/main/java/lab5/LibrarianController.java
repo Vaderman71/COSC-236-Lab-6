@@ -3,9 +3,11 @@ package lab5;
 public class LibrarianController {
 	
 	Library library; // Library dependency
+    private BorrowingService borrowingService; // Singleton
 	
-	public LibrarianController( ) {
+	public LibrarianController(BorrowingService borrowingService ) {
 		this.library = new Library(); // Constructor injection
+        this.borrowingService = BorrowingService.getInstance();
 	}
 	public Library getLibrary() {
 		return this.library;
