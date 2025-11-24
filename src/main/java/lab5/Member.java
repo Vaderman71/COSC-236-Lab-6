@@ -43,7 +43,7 @@ public class Member {
     }
 
     public void borrowBook(Book book) {
-        BorrowingServiceAPI borrowingService = new BorrowingService();
+        BorrowingService borrowingService = new BorrowingService();
         BorrowingBookResult result = borrowingService.borrowBook(this, book);
         System.out.println("Success: " + result.isSuccess() + " | " + result.getBorrowingMessage());
     }
@@ -72,5 +72,9 @@ public class Member {
             returnBook(book);
         }
         borrowedBooks.clear();
+    }
+
+    public Object getBorrowingService() {
+        return null;
     }
 }

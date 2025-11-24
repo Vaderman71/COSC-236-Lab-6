@@ -1,8 +1,22 @@
+package lab5;
 
 public class BorrowingService implements BorrowingServiceAPI {
 
 	
-    private static final int BORROW_LIMIT = 3;
+
+    private static BorrowingService instance; // private member
+    private int borrowingLimit; // to restrict the count of borrowed books
+    BorrowingService() { // private constructor
+        borrowingLimit = 3;
+    }
+    public static BorrowingService getInstance( ) {
+        // TODO
+        // Implement Singleton pattern. return instance;
+        if (instance == null) {
+            instance = new BorrowingService();
+        }
+        return instance;
+    }
 
     @Override
     public BorrowingBookResult borrowBook(Member member, Book book) {
@@ -15,8 +29,8 @@ public class BorrowingService implements BorrowingServiceAPI {
         if (!book.getIsAvailable()) {
             return new BorrowingBookResult(false, "Book is currently unavailable.");
         }
-        if (member.getBorrowedBooks().size() >= BORROW_LIMIT) {
-            return new BorrowingBookResult(false, "Borrowing limit exceeded. Max " + BORROW_LIMIT + " books allowed.");
+        if (member.getBorrowedBooks().size() >= borrowingLimit) {
+            return new BorrowingBookResult(false, "Borrowing limit exceeded. Max " + borrowingLimit + " books allowed.");
         }
 
         member.addBorrowedBook(book);

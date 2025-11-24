@@ -4,7 +4,7 @@ package lab5;
 public class LibraryApp {
 
 	// Create Controller, It will create an empty Library 
-	private static LibrarianController librarian =  new LibrarianController();
+	private static LibrarianController librarian =  new LibrarianController(null);
 	
 	// Some functions for the Assignment
 	private static void addMember(String name) {

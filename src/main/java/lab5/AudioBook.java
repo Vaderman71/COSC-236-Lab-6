@@ -1,3 +1,5 @@
+package lab5;
+
 public class AudioBook implements Book {
   private String title;
   private boolean isAvailable;
@@ -19,7 +21,7 @@ public boolean getIsAvailable(){
 
 @Override
   public void setIsAvailable (boolean isAvailable){
-    this.isAvailable = available;
+    this.isAvailable = true;
   }
 @Override
   public String toString(){

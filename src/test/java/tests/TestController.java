@@ -21,7 +21,7 @@ class TestController {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		this.librarian = new LibrarianController(); // Fresh library: one member, three books
+		this.librarian = new LibrarianController(null); // Fresh library: one member, three books
 		this.library = librarian.getLibrary(); 
 		librarian.addMember(memberName);
 		librarian.addBook(bookTitle1);

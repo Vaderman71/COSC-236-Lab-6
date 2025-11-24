@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import lab5.Member;
 import lab5.Book;
+import lab5.PaperBook;
+import lab5.EBook;
+import lab5.AudioBook;
 
 class TestBorrowBooks {
 
