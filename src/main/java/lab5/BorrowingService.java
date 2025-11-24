@@ -6,7 +6,7 @@ public class BorrowingService implements BorrowingServiceAPI {
 
     private static BorrowingService instance; // private member
     private int borrowingLimit; // to restrict the count of borrowed books
-    BorrowingService() { // private constructor
+    private BorrowingService() { // private constructor
         borrowingLimit = 3;
     }
     public static BorrowingService getInstance( ) {

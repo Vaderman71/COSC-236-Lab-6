@@ -11,8 +11,8 @@ class TestMembersBorrowingService {
     BorrowingService service = BorrowingService.getInstance();
     @Test
     void TestMemberServices() {
-        Member member1 = new Member("Member 1"); Member member2 = new
-                Member("Member 2");
+        Member member1 = new Member("Member 1", BorrowingService.getInstance()); Member member2 = new
+                Member("Member 2", BorrowingService.getInstance());
         assertEquals(member1.getBorrowingService(),
                 member2.getBorrowingService(),
                 "Members have two different borrowing services");

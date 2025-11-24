@@ -3,13 +3,9 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+import lab5.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import lab5.Library;
-import lab5.Book;
-import lab5.Member;
-import lab5.PaperBook;
-
 
 
 class TestAddRemoveBooks {
@@ -33,7 +29,7 @@ class TestAddRemoveBooks {
 //    Book audiobook2 = new AudioBook("1984");
 //    Book audiobook3 = new AudioBook("Moby Dick");
 	
-	Member member = new Member("Grady Booch");
+	Member member = new Member("Grady Booch", BorrowingService.getInstance());
 
     //could change this to mix media :
 	@Test

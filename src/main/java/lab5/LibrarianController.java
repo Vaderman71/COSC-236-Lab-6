@@ -36,7 +36,7 @@ public class LibrarianController {
     }
 
 	public void addMember(String name) {
-		library.addMember(new Member(name)); // Member class constructor dependency
+		library.addMember(new Member(name, BorrowingService.getInstance())); // Member class constructor dependency
 	}
 	public void removeBook(String title) {
 		library.removeBook(title); // remove 

@@ -3,13 +3,9 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-import lab5.PaperBook;
+import lab5.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import lab5.Member;
-import lab5.Library;
-import lab5.Book;
 
 class TestAddRemoveMembers {
 
@@ -21,8 +17,8 @@ class TestAddRemoveMembers {
 		 this.library = new Library(); // empty library for each test
 	}
 	
-	Member member1 = new Member("Dude");
-	Member member2 = new Member("Gal");
+	Member member1 = new Member("Dude", BorrowingService.getInstance());
+	Member member2 = new Member("Gal",BorrowingService.getInstance());
 	Book book1 = new PaperBook("Dune");
 	Book book2 = new PaperBook("1984");
 	

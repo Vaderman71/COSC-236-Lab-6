@@ -6,19 +6,22 @@ import java.util.Iterator;
 public class Member {
 
     private String name;
-    private ArrayList<Book> borrowedBooks; // Book class dependency
-
-    public Member(String name) {
+    private ArrayList<Book> borrowedItems;
+    private BorrowingService borrowingService; // Injected via constructor
+    // Constructor now takes the Singleton BorrowingService instance
+    public Member(String name, BorrowingService service) {
         this.name = name;
-        this.borrowedBooks = new ArrayList<>();
+        this.borrowedItems = new ArrayList<>();
+        this.borrowingService = service; // Store the Singleton instance
     }
+
 
     public String getName() {
         return name;
     }
 
     public ArrayList<Book> getBorrowedBooks() {
-        return borrowedBooks;
+        return borrowedItems;
     }
 
     public void setName(String name) {
@@ -31,47 +34,45 @@ public class Member {
     }
 
     public boolean hasBorrowed(Book book) {
-        return borrowedBooks.contains(book);
+        return borrowedItems.contains(book);
     }
 
     public void addBorrowedBook(Book book) {
-        borrowedBooks.add(book);
+        borrowedItems.add(book);
     }
 
     public void removeBorrowedBook(Book book) {
-        borrowedBooks.remove(book);
+        borrowedItems.remove(book);
     }
 
     public void borrowBook(Book book) {
-        BorrowingService borrowingService = new BorrowingService();
+        BorrowingService borrowingService = BorrowingService.getInstance();
         BorrowingBookResult result = borrowingService.borrowBook(this, book);
         System.out.println("Success: " + result.isSuccess() + " | " + result.getBorrowingMessage());
     }
 
     public void returnBook(Book book) {
-        BorrowingServiceAPI borrowingService = new BorrowingService();
+        BorrowingServiceAPI borrowingService = BorrowingService.getInstance();
         BorrowingBookResult result = borrowingService.returnBook(this, book);
         System.out.println("Success: " + result.isSuccess() + " | " + result.getBorrowingMessage());
     }
 
     public void listBorrowedBooks() {
         System.out.println("Books borrowed by " + name + ":");
-        for (Book book : borrowedBooks) {
+        for (Book book : borrowedItems) {
             System.out.println(book);
         }
     }
 
     public int borrowedBooksCount() {
-        return borrowedBooks.size();
+        return borrowedItems.size();
     }
 
     public void returnAllBooks() {
-        Iterator<Book> bookIterator = borrowedBooks.iterator();
-        while (bookIterator.hasNext()) {
-            Book book = bookIterator.next();
+        for (Book book : borrowedItems) {
             returnBook(book);
         }
-        borrowedBooks.clear();
+        borrowedItems.clear();
     }
 
     public Object getBorrowingService() {

@@ -21,7 +21,7 @@ public boolean getIsAvailable(){
 
 @Override
   public void setIsAvailable (boolean isAvailable){
-    this.isAvailable = true;
+    this.isAvailable = isAvailable;
   }
 @Override
   public String toString(){

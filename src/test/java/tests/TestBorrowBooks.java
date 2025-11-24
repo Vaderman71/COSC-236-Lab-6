@@ -2,15 +2,11 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import lab5.PaperBook;
+import lab5.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import lab5.Member;
-import lab5.Book;
 import lab5.PaperBook;
-import lab5.EBook;
-import lab5.AudioBook;
 
 class TestBorrowBooks {
 
@@ -24,8 +20,8 @@ class TestBorrowBooks {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		member1 = new Member("Alice"); // flush borrowedBook array 
-		member2 = new Member("Bob");   // flush borrowedBook array 
+		member1 = new Member("Alice", BorrowingService.getInstance()); // flush borrowedBook array
+		member2 = new Member("Bob", BorrowingService.getInstance());   // flush borrowedBook array
 		book1.setIsAvailable(true);
 		book2.setIsAvailable(true);
         ebook1.setIsAvailable(true);
