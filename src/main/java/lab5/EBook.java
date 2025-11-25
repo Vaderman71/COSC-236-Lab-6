@@ -6,6 +6,7 @@ public class EBook implements Book {
 
 public EBook(String title){
   this.title = title;
+  isAvailable = true;
 }
 
 @Override
