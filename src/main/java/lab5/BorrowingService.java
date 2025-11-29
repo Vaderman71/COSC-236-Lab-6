@@ -10,8 +10,6 @@ public class BorrowingService implements BorrowingServiceAPI {
         borrowingLimit = 3;
     }
     public static BorrowingService getInstance( ) {
-        // TODO
-        // Implement Singleton pattern. return instance;
         if (instance == null) {
             instance = new BorrowingService();
         }
