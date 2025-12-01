@@ -4,10 +4,16 @@ public class LibrarianController {
 	
 	Library library; // Library dependency
     private BorrowingService borrowingService; // Singleton
+    private PaperBookFactory paperBookFactory;
+	private EBookFactory eBookFactory;
+	private AudioBookFactory audioBookFactory;
 	
 	public LibrarianController(BorrowingService borrowingService ) {
 		this.library = new Library(); // Constructor injection
         this.borrowingService = BorrowingService.getInstance();
+        this.paperBookFactory = new PaperBookFactory();
+        this.eBookFactory = new EBookFactory();
+        this.audioBookFactory = new AudioBookFactory();
 	}
 	public Library getLibrary() {
 		return this.library;
@@ -24,15 +30,15 @@ public class LibrarianController {
 	}
 	  // Renamed method (previously addBook)
     public void addPaperBook(String title) {
-        library.addBook(new PaperBook(title));
+        library.addBook(paperBookFactory.createBook(title));
     }
     // New method for EBook
     public void addEBook(String title) {
-        library.addBook(new EBook(title));
+        library.addBook(eBookFactory.createBook(title));
     }
     // New method for AudioBook
     public void addAudioBook(String title) {
-        library.addBook(new AudioBook(title));
+        library.addBook(audioBookFactory.createBook(title));
     }
 
 	public void addMember(String name) {
@@ -82,5 +88,8 @@ public class LibrarianController {
 			member.returnBook(book); // members returns book. 
 		else  	
 			System.out.println("Either book " + title + " or member " + name + " not found.");
+	}
+	public void addBook(BookFactory factory, String title) {
+		library.addBook(factory.createBook(title)); // Book type depends on the factory passed in
 	}
 }
